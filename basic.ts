@@ -148,3 +148,72 @@ function addObj(first: NumberObj | object, second: NumberObj | object) {
   }
   return 0
 }
+
+let arr2: Array<number> = [1, 2, 3]
+let tuple: [number, string] = [1,'str']
+enum Color {
+  Red,
+  Green = 2,
+  Yellow
+}
+let c: Color = Color.Red
+console.log(c, Color.Yellow) // 1
+let colorName = Color[1]
+console.log(typeof colorName)
+
+let [first] = [1,2,3]
+
+// function printLabel(labelledObj: {label: string}) {
+//   console.log(labelledObj)
+// } 
+
+// let myObj = { size: 10, label: "Size 10 Object" };
+// printLabel(myObj);
+
+// printLabel({ size: 10, label: "Size 10 Object" });
+
+interface LabelledValue {
+  label: string
+}
+function printLabel(labelledObj: LabelledValue) {
+  console.log(labelledObj.label)
+}
+let myObj = { size: 10, label: "Size 10 Object" };
+printLabel(myObj);
+
+interface SquareConfig {
+  color?: string,
+  width?: number
+}
+function createSquare(config: SquareConfig): {color: string, area: number} {
+  let newSquare = {
+    color: 'white',
+    area: 100
+  }
+  if(config.color) {
+    newSquare.color = config.color
+  }
+  if(config.width) {
+    newSquare.area = config.width * config.width
+  }
+  return newSquare
+}
+interface Point {
+  readonly x: number;
+  y: number;
+}
+let p1: Point = { x: 10, y: 20 };
+p1.x = 5
+
+let arr1: ReadonlyArray<number> = [1,2,3,4]
+arr1.push(5)
+let arr3: number[] = arr1 // 报错 不能这样赋值 但是可以用类型断言重写
+arr3 = arr1 as number[]
+
+interface searchFunc {
+  (source: string, subString: string): boolean
+}
+let mySearch: searchFunc = function(src, sub) {
+  let result = src.search(sub)
+  return result > -1
+}
