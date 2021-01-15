@@ -41,10 +41,13 @@ enum Color {
   Green = 3,
   Yellow
 }
+Color.Red // 0
+// 知道枚举类型的值的时候 可以通过下标反查
+Color[3] // Green
 ```
 
 - 任意值
-不通过类型检查 之间通过编译阶段的检查
+不通过类型检查 直接通过编译阶段的检查
 ```js
 let notSure: any = 1
 notSure = 'str'
@@ -131,3 +134,8 @@ interface stringArray {
 ```js
 class Clock implements ClockInterface
 ```
+## 接口继承类 extends 但是不包括其实现
+
+## 函数
+### 重载
+- javaScript里函数根据传入不同的参数而返回不同类型的数据是很常见的

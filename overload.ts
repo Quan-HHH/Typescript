@@ -9,5 +9,5 @@ function add (a: Combinable, b: Combinable) {
   return a + b
 }
 
-const result = add('2313', ' 321321')
+const result = add(1, 1)
 console.log(result.split(' '))
